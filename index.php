@@ -29,7 +29,7 @@ $_SESSION["nbError"] = 0;
 
 
 $nombreDeLettre = strlen($_SESSION["mot"]);
-for ($i = 0; $i < $nombreDeLettre; $i++)
+for ($i =0; $i < $nombreDeLettre -2 ; $i++)
     $_SESSION["motAffiche"][$i] = $_SESSION["tiret"] ;
 
 if (isset($_GET["a"]) && strlen($_GET["a"]) == 1 && strpos($alphabet, $_GET["a"]) !== false) {
@@ -110,7 +110,7 @@ if ($_SESSION["nbError"] === 7)
                 ?>
                 <h1 class="jeu"><?= $_SESSION["motAffiche"] ?></h1>
 
-                <img src="asset/image/<?= $_SESSION['nbError'].".png"?> ">
+                <img src="asset/image/<?= $_SESSION['nbError'].".png"?>"> 
                 <?= $_SESSION['nbError'] ?>
                 <div>
                     <?php
