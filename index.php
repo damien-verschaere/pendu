@@ -50,7 +50,7 @@ if (isset($_GET["a"]) && strlen($_GET["a"]) == 1 && strpos($alphabet, $_GET["a"]
                 if ($_SESSION["mot"][$i] == $char) {
                     $found = true;
                    
-                    if ($_SESSION["motAffiche"] != $_SESSION["mot"]) {
+                    if ($_SESSION["motAffiche"] !== $_SESSION["mot"]) {
                         $msg = "Bravo , '$char' est dans le mot";
                     } else {
                         $msg = "Tu as gagné bravo";
@@ -95,6 +95,7 @@ if ($_SESSION["nbError"] === 7)
 <body>
     <header>
     <h1>HANGMAN</h1>
+    <a class="addWord" href="admin.php">Ajouter un mot</a>
     </header>
         
     <main class='principal'>
@@ -108,10 +109,11 @@ if ($_SESSION["nbError"] === 7)
                     echo "Essaye de gagner !";
                 }
                 ?>
+                <img src="asset/image/<?= $_SESSION['nbError'].".png"?>"> 
                 <h1 class="jeu"><?= $_SESSION["motAffiche"] ?></h1>
 
-                <img src="asset/image/<?= $_SESSION['nbError'].".png"?>"> 
-                <?= $_SESSION['nbError'] ?>
+                
+                
                 <div>
                     <?php
                     //Affichage de l'alphabet si la partie n'est pas finis 
@@ -136,12 +138,12 @@ if ($_SESSION["nbError"] === 7)
                     <input class="newGame" type="submit" name="reset" value="Nouvelle partie">
                 </form>
 
-                <a class="addWord" href="admin.php">Ajouter un mot</a>
+                
             </article>
    
     </main>
     <footer>
-            <a href=""></a>
+            <a href="https://github.com/damien-verschaere/pendu">GITHUB</a>
     </footer>
 </body>
 

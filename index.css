@@ -7,18 +7,49 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 150px;
     background-color: black;
 }
 header h1{
     color: white;
 }
+header a{
+    text-decoration: none ;
+    color: white;
+}
+main{
+    height: 500px;
+}
 .principal{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.jeu{
-    
-
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img,.jeu{
+    margin-top: 5%;
+}
+.jeu,.alphabet{
+    font-size: 50px;
+    letter-spacing:5px;
+}
+input{
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    background-color: black;
+}
+footer a {
+    text-decoration: none;
+    color:white;
+    margin-top: 3%;
 }

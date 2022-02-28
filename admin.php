@@ -22,23 +22,31 @@ if (isset($_GET["leMot"])) {
     }
 }
 
+
 if (isset($_POST["newMot"])) {
 
-    $Nouveaumot =htmlspecialchars($_POST["newMot"]);
+    $Nouveaumot = htmlspecialchars($_POST["newMot"]);
 
     $newMot = deleteSpecialChar(strtolower($Nouveaumot));
-
+    if (isset($_POST["newMot"])) {
+        ctype_alpha($_POST['newMot']);
+        echo "que des lettre svp";
+    } else {
+        echo 'test';
+    }
 
     if (strlen($_POST["newMot"]) >= 20) {
         $msg = "Votre mot doit faire moins de 20 caractères";
-    } 
-    foreach (trimTab($arrayMot) as $key => $mot) { // ça marche pas idk
+    }
+    foreach (trimTab($arrayMot) as $key => $mot) {
 
         if ($mot == $newMot) {
 
-            $msg = "Le mot n'est pas disponible";
+            $msg = "Le mot existe deja merci de votre proposition !";
         }
     }
+
+
 
     if (!isset($msg)) {
 
@@ -59,12 +67,13 @@ if (isset($_POST["newMot"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/pendu.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <header>
-
+        <h1>HANGMAN</h1>
+        <a class="addWord" href="admin.php">Ajouter un mot</a>
     </header>
     <main>
 
@@ -73,17 +82,17 @@ if (isset($_POST["newMot"])) {
                 <h1>Entre un nouveau mot !</h1>
 
                 <form action="" method="POST">
-                    <label for="newMot">Voulez vous ajouter un nouveau mot ? (<i>caractère spéciaux et les nombres sont interdit</i>)</label>
-                    <input type="text" id="newMot" name="newMot">
-                    <input class="btn btn-primary" type="submit" name="enoyer" value="envoyer">
+                    <label for="newMot">Voulez vous ajouter un nouveau mot ? </label>
+                    <input type="text" name="newMot">
+                    <input type="submit" name="enoyer" value="envoyer">
 
                 </form>
-                <a class="btn btn-primary" href="index.php">Retourner jouer !</a>
+                <a href="index.php">Retourner jouer !</a>
 
-                <h2 class="pb-3">Listes des mots</h2>
+                <h2 class="">Listes des mots</h2>
                 <?php
                 if (isset($msg)) { ?>
-                    <span class="alert alert-danger ">
+                    <span class=" ">
                         <?php
 
                         echo $msg;
@@ -111,7 +120,7 @@ if (isset($_POST["newMot"])) {
 
                         <li>Numéro : <?= $key . " " . $mot ?></li>
 
-                        <a class="btn btn-danger" href="./admin.php?leMot=<?= $key ?>">supprimer</a>
+                        <a class="" href="./admin.php?leMot=<?= $key ?>">supprimer</a>
                     <?php
                     }
                     ?>
@@ -122,7 +131,7 @@ if (isset($_POST["newMot"])) {
         </section>
     </main>
     <footer>
-
+        
     </footer>
 </body>
 
