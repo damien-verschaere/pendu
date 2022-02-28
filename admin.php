@@ -28,12 +28,7 @@ if (isset($_POST["newMot"])) {
     $Nouveaumot = htmlspecialchars($_POST["newMot"]);
 
     $newMot = deleteSpecialChar(strtolower($Nouveaumot));
-    if (isset($_POST["newMot"])) {
-        ctype_alpha($_POST['newMot']);
-        echo "que des lettre svp";
-    } else {
-        echo 'test';
-    }
+    
 
     if (strlen($_POST["newMot"]) >= 20) {
         $msg = "Votre mot doit faire moins de 20 caractères";
